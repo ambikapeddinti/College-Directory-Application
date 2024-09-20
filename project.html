@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="password"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="Student">Student</option>
+                <option value="Faculty Member">Faculty Member</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div id="error" class="error"></div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+            const errorDiv = document.getElementById('error');
+
+            // Mocking a simple login function (Replace this with actual server-side authentication)
+            if (username === "admin" && password === "admin123" && role === "Administrator") {
+                window.location.href = "admin-dashboard.html";  // Redirect to admin dashboard
+            } else if (username === "faculty" && password === "faculty123" && role === "Faculty Member") {
+                window.location.href = "faculty-dashboard.html";  // Redirect to faculty dashboard
+            } else if (username === "student" && password === "student123" && role === "Student") {
+                window.location.href = "student-dashboard.html";  // Redirect to student dashboard
+            } else {
+                errorDiv.textContent = "Invalid username or password!";
+            }
+        });
+    </script>
+</body>
+</html>
